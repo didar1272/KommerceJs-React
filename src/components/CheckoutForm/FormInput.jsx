@@ -10,6 +10,7 @@ const FormInput = ({ name, label, required }) => {
         <Grid item xs={12} sm={6}>
             <Controller
                 as={TextField}
+                defaultValue=""
                 name={name}
                 label={label}
                 required={required}

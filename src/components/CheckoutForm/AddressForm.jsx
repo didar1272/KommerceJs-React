@@ -6,7 +6,7 @@ import FormInput from './FormInput'
 
 import { commerce } from '../../lib/commerce'
 
-const AddressForm = ({ checkoutToken }) => {
+const AddressForm = ({ checkoutToken, next }) => {
     const [shippingCountries, setshippingCountries] = useState([])
     const [shippingCountry, setshippingCountry] = useState('')
     const [shippingSubdivisions, setshippingSubdivisions] = useState([])
@@ -41,7 +41,8 @@ const AddressForm = ({ checkoutToken }) => {
     }
 
     useEffect(() => {
-        fetchShippingCountries(checkoutToken.id)  
+        fetchShippingCountries(checkoutToken.id)
+        // eslint-disable-next-line  
     }, [])
 
     useEffect(() => {
@@ -51,13 +52,14 @@ const AddressForm = ({ checkoutToken }) => {
 
     useEffect(() => {
         if(shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision)
+        // eslint-disable-next-line
     }, [shippingSubdivision])
 
     return (
         <>
            <Typography variant='h6' gutterBottom>Shipping Address</Typography>
            <FormProvider {...methods}>
-               <form onSubmit=''>
+               <form onSubmit={methods.handleSubmit((data) => next({ ...data, shippingCountry, shippingSubdivision, shippingOption}) )}>
                     <Grid container spacing={3}>
                         <FormInput  name='firstName' label='First Name' required />
                         <FormInput  name='lastName' label='Last Name' required />
