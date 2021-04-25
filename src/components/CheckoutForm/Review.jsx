@@ -14,7 +14,7 @@ const Review = ({ checkoutToken }) => {
                 ))}
                 <ListItem style={{padding: '10px 0px'}}>
                     <ListItemText primary='total' />
-                    <Typography variant='subtotal1' style={{ fontWeight: 700 }}>
+                    <Typography variant='subtitle1' style={{ fontWeight: 700 }}>
                         {checkoutToken.live.subtotal.formatted_with_symbol}
                     </Typography>
                 </ListItem>

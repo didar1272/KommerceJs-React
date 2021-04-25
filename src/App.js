@@ -45,6 +45,8 @@ const App = () => {
         setCart(response.cart);
     }
 
+    
+
     const refreshCart = async () => {
         const response = await commerce.cart.refresh();
     
